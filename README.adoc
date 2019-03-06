@@ -1,0 +1,18 @@
+= Google JSON-P JsonFactory
+
+Implements Google HTTP Client `JsonFactory` using `JSON-P`. This enables to drop Jackson when
+only present for that.
+
+
+Example:
+
+[source,java]
+----
+final JsonFactory jsonFactory = JsonpJsonFactory.of();
+
+final GoogleCredential credential = GoogleCredential.fromStream(
+  stream, httpTransport, jsonFactory);
+final AnalyticsReporting reporting = new AnalyticsReporting.Builder(
+    httpTransport, jsonFactory, credential)
+  .setApplicationName("my-app").build();
+----
